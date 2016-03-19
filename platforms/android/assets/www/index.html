@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <title>Writer's Block</title>
+    <script src="js/jquery-2.1.3.min.js" type="text/javascript"></script>
+    <script src="js/pusher.min.js" type="text/javascript"></script>
+
+    <script src="//js.pusher.com/3.0/pusher.min.js"></script>
+    <script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
+
+    <script>
+      // Enable pusher logging - don't include this in production
+      Pusher.log = function(message) {
+        if (window.console && window.console.log) {
+          window.console.log(message);
+        }
+      };
+
+      var pusher = new Pusher('5901f4ac8b275f578afb', {
+        encrypted: true
+      });
+
+      var channel = pusher.subscribe('test_channel');
+      channel.bind('my_event', function(data) {
+        alert(data.message);
+      });
+    </script>
+
+    <script type="text/javascript">if (!window.adf) window.adf = {};
+                           adf.wwwPath = "../../../../www/";</script>
+<script type="text/javascript" src="../../../../www/js/base.js"></script>
+<script type="text/javascript">
+  function showAlert(frm) {
+    Alert.alert(frm.title.value,
+                frm.message.value,
+                frm.buttonLabel.value,
+                function(button) {
+                  console.log("User tapped button:" + button);
+                });
+  }
+</script>
+
+
+    <!--<link rel="stylesheet" href="css/index1.css" />-->
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" type="text/css" href="css/custom.css">
+
+    <script>
+    $(document).bind("mobileinit", function() {
+        $.mobile.defaultPageTransition = 'none';
+        $.mobile.defaultDialogTransition = 'none';
+        $.mobile.useFastClick = true;
+    });
+    </script>
+
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <!--<script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.mobile.min.js"></script>-->
+
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="js/map.js"></script>
+
+    <script type="text/javascript">
+    var map;
+    document.addEventListener("deviceready", function() {
+      //var div = document.getElementById("map_canvas");
+
+      const LISLE= new plugin.google.maps.LatLng(41.792278, -88.0652257);
+      const ADAMS= new plugin.google.maps.LatLng(41.8857, -87.645);
+      const ALGREN= new plugin.google.maps.LatLng(41.8557, -87.645);
+      const CRICHTON= new plugin.google.maps.LatLng(41.8607000, -87.6289340);
+      const EBERT= new plugin.google.maps.LatLng(41.9857, -87.645);
+      const FULLER= new plugin.google.maps.LatLng(41.8606281, -87.6151153);
+      const HECHT= new plugin.google.maps.LatLng(41.8509109, -87.6218101);
+      const HEMINGWAY= new plugin.google.maps.LatLng(41.8294255, -87.6135703);
+
+
+      // Initialize the map view
+      map = plugin.google.maps.Map.getMap({
+        'backgroundColor': 'white',
+        'mapType': plugin.google.maps.MapTypeId.ROADMAP,
+        'controls': {
+          'compass': true,
+          'myLocationButton': true,
+          'indoorPicker': true,
+          'zoom': true
+        },
+        'gestures': {
+          'scroll': true,
+          'tilt': true,
+          'rotate': true,
+          'zoom': true
+        },
+        'camera': {
+          'latLng': ADAMS,
+          'zoom': 12
+        }
+      });
+
+      // Wait until the map is ready status.
+      map.addEventListener(plugin.google.maps.event.MAP_READY, function(map) {
+          map.getMyLocation(function(location) {
+              var msg_adams = ["Franklin P. Adams"].join('\n<a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">'+
+      'https://en.wikipedia.org/w/index.php?title=Uluru</a>" ');
+              var msg_algren = ["Nelson Algren"].join("\n");
+              var msg_Crichton = ["Michael Crichton"].join("\n");
+              var msg_Ebert = ["Rodger Ebert"].join("\n");
+              var msg_Fuller = ["Henry Blake Fuller"].join("\n");
+              var msg_Hecht = ["Ben Hecht"].join("\n");
+              var msg_Hemingway = ["Ernest Hemingway"].join("\n");
+              var msg2 = ["ME"].join("\n");
+              var icon = {
+                  url: 'http://herringshawdesign.com/img/quill2.gif'
+              };
+
+              map.addMarker({
+                  'position': ADAMS,
+                  'icon': icon,
+                  'title': msg_adams
+                  }, function(marker) {
+                      marker.showInfoWindow();
+              });
+
+              map.addMarker({
+                  'position': ALGREN,
+                  'icon': icon,
+                  'title': msg_algren
+                  }, function(marker) {
+                      marker.showInfoWindow();
+              });
+
+              map.addMarker({
+                  'position': CRICHTON,
+                  'icon': icon,
+                  'title': msg_Crichton
+                  }, function(marker) {
+                      marker.showInfoWindow();
+              });
+
+              map.addMarker({
+                  'position': EBERT,
+                  'icon': icon,
+                  'title': msg_Ebert
+                  }, function(marker) {
+                      marker.showInfoWindow();
+              });
+
+              map.addMarker({
+                  'position': HEMINGWAY,
+                  'icon': icon,
+                  'title': msg_Hemingway
+                  }, function(marker) {
+                      marker.showInfoWindow();
+              });
+
+              map.addMarker({
+                  'position': FULLER,
+                  'icon': icon,
+                  'title': msg_Fuller
+                  }, function(marker) {
+                      marker.showInfoWindow();
+              });
+
+              map.addMarker({
+                  'position': HECHT,
+                  'icon': icon,
+                  'title': msg_Hecht
+                  }, function(marker) {
+                      marker.showInfoWindow();
+              });
+
+              map.addMarker({
+                  'position': LISLE,
+                  'title': msg2
+                  }, function(marker) {
+                      marker.showInfoWindow();
+              });
+          });
+      });
+      //map.addEventListener(plugin.google.maps.event.MAP_READY, addMarker);
+      map.addEventListener(plugin.google.maps.event.MAP_READY, onMapReady);
+      //map.addEventListener(plugin.google.maps.event.MAP_READY, toNeighborhood);
+      },  false);
+
+    function onMapReady() {
+      var button = document.getElementById("button1");
+      button.addEventListener("click", onBtnClicked, false);
+    }
+
+    function onBtnClicked() {
+      map.showDialog();
+    }
+//    function toNeighborhood() {
+//        var button = document.getElementById("button2");
+//        button.addEventListener("click", onBtnClicked2, false);
+//    }
+
+//    function onBtnClicked2() {
+      //window.open("http://www.w3schools.com");
+      //document.getElementById('welcomeDiv').style.display = "block";
+//    }
+
+
+
+    </script>
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+  </head>
+
+
+
+
+    <body>
+     <!--<div class="notification">Waiting</div>-->
+      <div data-dom-cache="false" data-role="page" id="index" style="transparent">
+          <div data-role="header" data-theme="a">
+            <h1>Writer's Block</h1>
+          </div>
+          <!--<img src="img/background.gif" style="width: 100%">-->
+
+
+
+          <div data-role="footer" data-theme="a" data-position="fixed">
+
+
+
+            <ul data-role="listview" data-inset="true">
+
+                <li  data-theme="a" style="width:100%">
+                    <a href="#map_canvas" rel="external" id="button1">
+                      My Location
+                    </a>
+                </li>
+                <li data-theme="a" style="width:100%" >
+                    <a href="#neighborhoods" rel="external">
+                      Search Neighborhoods
+                    </a>
+                </li>
+
+                <li data-theme="a" style="width:100%" >
+                    <a href="#authors" rel="external">
+                      Search Author
+                    </a>
+                </li>
+                <li data-theme="a" style="width:100%">
+                    <a href="#about" rel="external">
+                      About
+                    </a>
+                </li>
+
+            </ul>
+          </div>
+      </div>
+
+
+      <!--<div data-dom-cache="false" data-role="page" id="map_canvas"></div>-->
+
+      <!-- Search neighborhood field -->
+      <div data-dom-cache="false" data-role="page" id="neighborhoods">
+          <div data-role="header" data-theme="a">
+              <a data-role="button" href="index.html" data-icon="home" data-iconpos="left" class="ui-btn-right">
+                  Home
+              </a>
+              <a data-role="button" data-rel="back" href="#page1" data-icon="arrow-l" data-iconpos="left" class="ui-btn-left">
+                  Back
+              </a>
+              <h1>Search Neighborhood</h1></div>
+              <div data-role="content">
+              <select id="mySelect" onchange="myNeighborhood()">
+                <option value="">Select A Neighborhood
+                <option value="Edgewater">Edgewater
+                <option value="Hyde Park">Hyde Park
+                <option value="South Chicago">South Chicago
+                <option value="Ravenswood">Ravenswood
+              </select>
+            </div>
+
+              <center><h3><div id="test1"></div></h3>
+              <div id="test2"></div>
+              <div id="test3"></div>
+              <div id="test4"></div></center>
+
+              <script>
+              function myNeighborhood() {
+                  var x = document.getElementById("mySelect").value;
+                  var mybr = document.createElement('br');
+                  document.getElementById("test1").innerHTML = "Authors of " + x;
+
+                    if (x == "Ravenswood"){
+                      var str = "Henry Blake Fuller";
+                      var result1 = str.link("#Blake");
+                      var str2 = "Ben Hecht";
+                      var result2 = str2.link("#Hecht");
+                      var str3 = "Ernest Hemingway";
+                      var result3 = str3.link("#Hemingway");
+                      document.getElementById("test1").innerHTML = "Authors of " + x;
+                      document.getElementById("test2").innerHTML = result1;
+                      document.getElementById("test3").innerHTML = result2;
+                      document.getElementById("test4").innerHTML = result3;
+                    }
+
+                    if (x == "South Chicago"){
+                      var str = "Michael Crichton";
+                      var result2 = str.link("#Crichton");
+                      var str1 = "Nelson Algren";
+                      var result3 = str1.link("#Algren");
+                      var str2 = "";
+                      var result4 = str2.link("#Algren");
+                      document.getElementById("test1").innerHTML = "Authors of " + x;
+                      document.getElementById("test2").innerHTML = result2;
+                      document.getElementById("test3").innerHTML = result3;
+                      document.getElementById("test4").innerHTML = result4;
+
+                    }
+
+
+
+              }
+              </script>
+
+
+
+          <div data-role="footer" data-theme="a" data-position="fixed"><h1>Writer's Block</h1></div>
+      </div>
+
+
+
+      <!-- Search authors field -->
+
+
+
+        <div data-dom-cache="false" data-role="page" id="authors">
+            <div data-role="header" data-theme="a">
+                <a data-role="button" href="index.html" data-icon="home" data-iconpos="left" class="ui-btn-right">
+                    Home
+                </a>
+                <a data-role="button" data-rel="back" href="#page1" data-icon="arrow-l" data-iconpos="left" class="ui-btn-left">
+                    Back
+                </a>
+                <h1>Search Author</h1></div>
+                <div data-role="content">
+                <ul data-role="listview" data-filter-placeholder="Search authors..." data-filter-reveal="true" data-filter="true">
+                    <li><a href="#Blake" rel="external">Henry Blake Fuller</a></li>
+                    <li><a href="#Hecht" rel="external">Ben Hecht</a></li>
+                    <li><a href="#Blake" rel="external">Ernest Hemingway</a></li>
+                    <li><a href="#Hecht" rel="external">Rodger Ebert</a></li>
+                    <li><a href="#Hecht" rel="external">Franklin Adams</a></li>
+                    <li><a href="#Hecht" rel="external">Nelson Algren</a></li>
+                    <li><a href="#Hecht" rel="external">Michael Crichton</a></li>
+                </ul>
+                <br><br>
+                <center><h4>Do you have a suggestion for a local author?</h4>
+                <form>
+                    <br>Author: <input type="text" name="title" value="">
+                    <br>Description: <input type="text" name="message" value="">
+                    <!--<br>Button Label: <input type="text" name="buttonLabel" value="Button">-->
+                    <!--<br><input type="button" value="Send" onclick="showAlert(this.form);">-->
+                  </form>
+                  <br><br>
+
+
+
+                <button onclick="myFunction()" style="height:40px; width:200px">Enter Suggestion</button>
+
+                <p id="demo"></p></center>
+
+                <script>
+                function myFunction() {
+                    var person = prompt("Confirm your author's name: ", "Dr. Suess");
+
+                    if (person != null) {
+                        document.getElementById("demo").innerHTML =
+                        "Thank you! " + person + " will be considered as an addition to our database.";
+                    }
+                }
+                </script>
+              </div>
+
+                  <!--<input type="search" id="merchantName" name="merchant" placeholder="enter author name"></input>-->
+            <div data-role="footer" data-theme="a" data-position="fixed"><h4>Writer's Block</h4></div>
+        </div>
+
+
+        <!-- THE ABOUT PAGE-->
+        <div data-dom-cache="false" data-role="page" id="about">
+            <div data-role="header" data-theme="a">
+                <a data-role="button" href="index.html" data-icon="home" data-iconpos="left"
+                   class="ui-btn-right">
+                    Home
+                </a>
+                <a data-role="button" data-rel="back" href="#page1" data-icon="arrow-l"
+                   data-iconpos="left" class="ui-btn-left">
+                    Back
+                </a>
+                <h1 >About</h1></div>
+            <div data-role="content">
+
+                    Discover Chicago through the eyes of legendary writers and creators. Read fascinating stories and visit the secret places of the writers who live and lived in Chicago and shaped modern culture.
+
+                </div>
+
+            <div data-role="footer" data-theme="a" data-position="fixed"  ><h4>Writer's Block</h4></div>
+        </div>
+
+        <!-- Henry Blake Fuller -->
+        <div data-dom-cache="false" data-role="page" id="Blake">
+            <div data-role="header" data-theme="a">
+                <a data-role="button" href="index.html" data-icon="home" data-iconpos="left" class="ui-btn-right">
+                    Home
+                </a>
+                <a data-role="button" data-rel="back" href="#page1" data-icon="arrow-l" data-iconpos="left" class="ui-btn-left">
+                    Back
+                </a>
+                <h1>Henry Blake Fuller</h1></div>
+                <div data-role="content">
+                  Fuller's earliest works were travel romances set in Italy that featured allegorical characters. Both The Chevalier of Pensieri–Vani (1890) and The Châtelaine of La Trinité (1892) bear some thematic resemblance to the works of Henry James, whose primary interest was in the contrast between American and European ways of life. Fuller's first two books appealed to the genteel tastes of cultivated New Englanders such as Charles Eliot Norton and James Russell Lowell,[1] who took Fuller's work as a promising sign of a burgeoning literary culture in what was then still largely the frontier city of Chicago.
+                </div>
+            <div data-role="footer" data-theme="a" data-position="fixed"><h1>Writer's Block</h1></div>
+        </div>
+
+        <!-- Ben Hecht -->
+        <div data-dom-cache="false" data-role="page" id="Hecht">
+            <div data-role="header" data-theme="a">
+                <a data-role="button" href="index.html" data-icon="home" data-iconpos="left" class="ui-btn-right">
+                    Home
+                </a>
+                <a data-role="button" data-rel="back" href="#page1" data-icon="arrow-l" data-iconpos="left" class="ui-btn-left">
+                    Back
+                </a>
+                <h1>Ben Hecht</h1></div>
+                <div data-role="content">
+                  A prolific writer, Hecht received the first Academy Award for Original Screenplay, for Underworld (1927). Many of the screenplays he worked on are now considered classics. He also provided story ideas for such films as Stagecoach (1939). Film historian Richard Corliss called him "the Hollywood screenwriter", someone who "personified Hollywood itself." In 1940, he wrote, produced, and directed, Angels Over Broadway, which was nominated for Best Screenplay. In total, six of his movie screenplays were nominated for Academy Awards, with two winning.
+                </div>
+            <div data-role="footer" data-theme="a" data-position="fixed"><h1>Writer's Block</h1></div>
+        </div>
+
+    </body>
+</html>
